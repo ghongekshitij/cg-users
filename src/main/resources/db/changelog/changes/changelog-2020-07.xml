@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="1">
+        <createTable tableName="user_information">
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="user_type" type="SMALLINT"/>
+            <column name="business_agency_name" type="VARCHAR(255)"/>
+            <column name="mobile" type="BIGINT"/>
+            <column name="is_mobile_verified" type="BOOLEAN"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="is_email_verified" type="BOOLEAN"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="is_blocked" type="BOOLEAN"/>
+            <column name="is_assured" type="BOOLEAN"/>
+            <column name="is_verified" type="BOOLEAN"/>
+        </createTable>
+        <insert tableName="user_information">
+            <column name="user_id" value="b412539a-c77e-11ea-801b-107b4460304d"/>
+            <column name="name" value="Kshitij Ghonge"/>
+            <column name="user_type" value="0"/>
+            <column name="business_agency_name" value="Super Admin"/>
+            <column name="mobile" value="7620181626"/>
+            <column name="is_mobile_verified" valueBoolean="true"/>
+            <column name="email" value="ghongekshitij@gmail.com"/>
+            <column name="is_email_verified" valueBoolean="true"/>
+            <column name="is_deleted" valueBoolean="false"/>
+            <column name="is_blocked" valueBoolean="false"/>
+            <column name="is_assured" valueBoolean="true"/>
+            <column name="is_verified" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="admin" id="2">
+        <createTable tableName="user_auth">
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="password" type="VARCHAR(1024)"/>
+        </createTable>
+        <insert tableName="user_auth">
+            <column name="user_id" value="b412539a-c77e-11ea-801b-107b4460304d"/>
+            <column name="password" value="7620181626"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="admin" id="3">
+        <createTable tableName="otp_details">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="VARCHAR(512)"/>
+            <column name="generated_on" type="BIGINT"/>
+            <column name="otp" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
